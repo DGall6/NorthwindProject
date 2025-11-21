@@ -8,8 +8,8 @@
           <label class="form-check-label ms-2 mt-1" for="Discontinued">Discontinued</label>
         </div>
       </th>
-      <th scope="col" class="text-end">Price ($)</th>
-      <th scope="col" class="text-end">Stock</th>
+      @* <th scope="col" class="text-end">Price ($)</th>
+      <th scope="col" class="text-end">Stock</th> *@
     </tr>
 </thead>
 <tbody id="product_rows">
@@ -30,15 +30,15 @@
   async function fetchOrders() {
     @* const discontinued = document.getElementById('Discontinued').checked ? "" : "/discontinued/false"; *@
     const { data: fetchedOrders } = await axios.get(`../../api/order`);
-    // console.log(fetchedProducts);
+    console.log(fetchedOrders);
     let product_rows = "";
     fetchedOrders.map(order => {
       @* const css = product.discontinued ? " class='discontinued'" : ""; *@
       @* console.log(css); *@
       product_rows += 
         `<tr>
-          <td>${order.id}</td>
-          <td class="text-end">${order.requiredDate}</td>
+          <td>${order.orderId}</td>
+          @* <td class="text-end">${order.requiredDate}</td> *@
         </tr>`;
     });
     document.getElementById('product_rows').innerHTML = product_rows;

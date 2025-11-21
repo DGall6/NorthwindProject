@@ -28,7 +28,7 @@ namespace Northwind.Controllers
         public IEnumerable<Product> GetByCategoryDiscontinued(int CategoryId, bool discontinued) => _dataContext.Products.Where(p => p.CategoryId == CategoryId && p.Discontinued == discontinued).OrderBy(p => p.ProductName);
 
         [HttpGet, Route("api/order")]
-        public IEnumerable<Order> GetOrders() => _dataContext.Orders.OrderBy(o => o.RequiredDate);
+        public IEnumerable<Order> GetOrders() => _dataContext.Orders;
     }
 }
 
