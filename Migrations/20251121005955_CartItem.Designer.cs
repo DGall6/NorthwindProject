@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251121003011_CartItem")]
+    [Migration("20251121005955_CartItem")]
     partial class CartItem
     {
         /// <inheritdoc />
