@@ -84,6 +84,14 @@ body {
     opacity: .5;
 }
 
+.overdue td {
+    background-color: red;
+}
+
+.in-progress td{
+    background-color: yellow;
+}
+
 #product_rows tr {
   cursor: pointer;
 }
