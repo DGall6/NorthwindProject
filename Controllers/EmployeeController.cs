@@ -17,6 +17,7 @@ public class EmployeeController(DataContext db, UserManager<AppUser> usrMgr) : C
     {
       Employee employee = new Employee
       {
+        Email = employeeWithPassword.Email,
         LastName = employeeWithPassword.LastName,
         FirstName = employeeWithPassword.FirstName,
         Title = employeeWithPassword.Title,
@@ -47,7 +48,7 @@ public class EmployeeController(DataContext db, UserManager<AppUser> usrMgr) : C
         else
         {
           // Assign user to customers Role
-          result = await _userManager.AddToRoleAsync(user, "northwind-customer");
+          result = await _userManager.AddToRoleAsync(user, "northwind-employee");
 
           if (!result.Succeeded)
           {
