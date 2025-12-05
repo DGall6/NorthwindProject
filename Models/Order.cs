@@ -17,4 +17,7 @@ public class Order
     public string ShipRegion { get; set; }
     public string ShipPostalCode { get; set; }
     public string ShipCountry { get; set; }
+
+    public Customer Customer { get; set; }
+    public Employee Employee { get; set; }
 }

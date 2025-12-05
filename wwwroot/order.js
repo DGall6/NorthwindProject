@@ -22,7 +22,7 @@ async function fetchOrders() {
             if (requiredDate < now)
             {
                 css = "overdue";
-                orderStatus = "Overdue!!!"
+                orderStatus = "Overdue"
             } else {
                 css = 'in-progress';
                 orderStatus = "In Progress"
@@ -38,6 +38,12 @@ async function fetchOrders() {
         `<tr class="${css}">
             <td>${order.orderId}</td>
             <td>${orderStatus}</td>
+            <td>${order.customer.companyName}</td>
+            <td>${order.customer.phone}</td>
+            <td>${order.shipAddress}, ${order.shipCity}${order.shipRegion ? ", " + order.shipRegion : ""} ${order.shipPostalCode} ${order.shipCountry}</td>
+            <td>${order.employee.firstName} ${order.employee.lastName}</td>
+            <td>${order.employee.extension}</td>
+            <td class="text-end">${new Date(order.orderDate).toLocaleDateString()}</td>
             <td class="text-end">${shippedDate ? shippedDate.toLocaleDateString() : "Not Shipped"}</td>
             <td class="text-end">${requiredDate.toLocaleDateString()}</td>
         </tr>`;

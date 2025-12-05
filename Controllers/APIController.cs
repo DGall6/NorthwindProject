@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Northwind.Controllers
 {
@@ -32,13 +33,22 @@ namespace Northwind.Controllers
         public CartItem Post([FromBody] CartItemJSON cartItem) => _dataContext.AddToCart(cartItem);
 
         [HttpGet, Route("api/order")]
-        public IEnumerable<Order> GetAllOrders() => _dataContext.Orders.OrderByDescending(o => o.RequiredDate);
+        public IEnumerable<Order> GetAllOrders() => _dataContext.Orders
+            .Include(o => o.Customer)
+            .Include(o => o.Employee)
+            .OrderByDescending(o => o.RequiredDate);
 
         [HttpGet, Route("api/order/overdue")]
-        public IEnumerable<Order> GetOverdueOrders() => _dataContext.Orders.Where(o => (o.ShippedDate == null && o.RequiredDate < DateTime.Now) || (o.ShippedDate > o.RequiredDate)).OrderByDescending(o => o.RequiredDate);
+        public IEnumerable<Order> GetOverdueOrders() => _dataContext.Orders.Where(o => (o.ShippedDate == null && o.RequiredDate < DateTime.Now) || (o.ShippedDate > o.RequiredDate))
+            .Include(o => o.Customer)
+            .Include(o => o.Employee)
+            .OrderByDescending(o => o.RequiredDate);
         
         [HttpGet, Route("api/order/active")]
-        public IEnumerable<Order> GetActiveOrders() => _dataContext.Orders.Where(o => o.ShippedDate == null).OrderByDescending(o => o.RequiredDate);
+        public IEnumerable<Order> GetActiveOrders() => _dataContext.Orders.Where(o => o.ShippedDate == null)
+            .Include(o => o.Customer)
+            .Include(o => o.Employee)
+            .OrderByDescending(o => o.RequiredDate);
     }
 }
 
