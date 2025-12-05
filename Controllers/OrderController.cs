@@ -9,6 +9,6 @@ public class OrderController : Controller
   private DataContext _dataContext;
   public OrderController(DataContext db) => _dataContext = db;
   
-  // [Authorize(Roles = "northwind-employee")]
+  [Authorize(Roles = "northwind-employee")]
   public IActionResult ViewOrders() => View(_dataContext.Orders.OrderBy(o => o.RequiredDate));
 }

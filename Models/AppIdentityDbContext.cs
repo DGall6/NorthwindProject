@@ -4,5 +4,3 @@ using Microsoft.EntityFrameworkCore;
 public class AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : IdentityDbContext<AppUser>(options)
 {
 }
-
-//  Add them to role

@@ -73,7 +73,7 @@
                     Employee role is not created yet so it is commented out *@
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {
-                        @* if (User.IsInRole("northwind-employee"))*@
+                        if (User.IsInRole("northwind-employee"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

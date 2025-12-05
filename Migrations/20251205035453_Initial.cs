@@ -65,8 +65,7 @@ namespace Northwind.Migrations
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HomePhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ReportsTo = table.Column<int>(type: "int", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ReportsTo = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

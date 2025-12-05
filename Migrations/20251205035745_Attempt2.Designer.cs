@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20251205030619_Initial")]
-    partial class Initial
+    [Migration("20251205035745_Attempt2")]
+    partial class Attempt2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
