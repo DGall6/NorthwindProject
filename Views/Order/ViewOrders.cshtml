@@ -2,12 +2,13 @@
 <select class="form-select mt-3" id="orderFilter">
   <option value="" selected>All Orders</option>
   <option value="/overdue">Overdue Orders</option>
-  <option value="/active">Orders in Progress</option>
+  <option value="/active">Unfulfilled Orders</option>
 </select>
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Order Number</th>
+      <th scope="col">Order Status</th>
       <th scope="col" class="text-end">Shipped Date</th>
       <th scope="col" class="text-end">Required Date</th>
     </tr>

@@ -12,23 +12,32 @@ async function fetchOrders() {
     // Create one date object here to not need to create 800+ date objects
     const now = new Date();
     fetchedOrders.map(order => {
+        const requiredDate = new Date(order.requiredDate);
         // If shippedDate exists, use it to create new date object. If not, make empty string
-        const requiredDate = order.requiredDate ? new Date(order.requiredDate) : "";
         const shippedDate = order.shippedDate ? new Date(order.shippedDate) : "";
-        let css = '';
-        if (!shippedDate || shippedDate > requiredDate)
+        let css = 'completed';
+        let orderStatus = 'Completed';
+        if (!shippedDate)
         {
-            if (requiredDate < now || shippedDate > requiredDate)
+            if (requiredDate < now)
             {
-                css = 'class="overdue"';
+                css = "overdue";
+                orderStatus = "Overdue!!!"
             } else {
-                css = 'class="in-progress"';
+                css = 'in-progress';
+                orderStatus = "In Progress"
+            }
+        } else {
+            if (requiredDate < shippedDate){
+                css = 'late';
+                orderStatus = "Completed Late";
             }
         }
         // console.log(shippedDate)
         order_rows +=
-        `<tr ${css}>
+        `<tr class="${css}">
             <td>${order.orderId}</td>
+            <td>${orderStatus}</td>
             <td class="text-end">${shippedDate ? shippedDate.toLocaleDateString() : "Not Shipped"}</td>
             <td class="text-end">${requiredDate.toLocaleDateString()}</td>
         </tr>`;
