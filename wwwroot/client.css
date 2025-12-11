@@ -85,11 +85,11 @@ body {
 }
 
 .overdue td {
-    background-color: rgba(250, 67, 67, 0.664);
+    background-color: rgba(255, 0, 0, 0.315);
 }
 
 .in-progress td{
-    background-color: rgba(255, 255, 0, 0.342);
+    background-color: rgba(255, 255, 0, 0.24);
 }
 
 .late td {
@@ -97,7 +97,7 @@ body {
 }
 
 .completed td{
-    background-color: #00ff401c;
+    background-color: #00ad2b1f;
 }
 
 #product_rows tr {

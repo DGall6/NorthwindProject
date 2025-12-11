@@ -9,7 +9,7 @@ async function fetchOrders() {
     const { data: fetchedOrders } = await axios.get(`../../api/order${filter}`);
     console.log(fetchedOrders);
     let order_rows = "";
-    // Create one date object here to not need to create 800+ date objects
+    // Create one date object here to not need to create 800+ date objects each loop
     const now = new Date();
     fetchedOrders.map(order => {
         const requiredDate = new Date(order.requiredDate);

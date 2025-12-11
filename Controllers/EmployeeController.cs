@@ -8,6 +8,7 @@ public class EmployeeController(DataContext db, UserManager<AppUser> usrMgr) : C
   private readonly DataContext _dataContext = db;
   private readonly UserManager<AppUser> _userManager = usrMgr;
 
+  [Authorize(Roles = "northwind-employee")]
   public IActionResult Register() => View();
   [HttpPost]
   [ValidateAntiForgeryToken]
@@ -47,7 +48,7 @@ public class EmployeeController(DataContext db, UserManager<AppUser> usrMgr) : C
         }
         else
         {
-          // Assign user to customers Role
+          // Assign user to employee Role
           result = await _userManager.AddToRoleAsync(user, "northwind-employee");
 
           if (!result.Succeeded)
@@ -58,7 +59,7 @@ public class EmployeeController(DataContext db, UserManager<AppUser> usrMgr) : C
           }
           else
           {
-            // Create customer (Northwind)
+            // Create employee (Northwind)
             _dataContext.AddEmployee(employee);
             return RedirectToAction("Index", "Home");
           }
